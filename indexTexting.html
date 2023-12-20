@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practice</title>
+    <!-- added google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+    <style>
+      #user-input-field {
+          width: 80%; /* Set desired width here */
+          padding: 8px; /* Adding some padding for better appearance */
+          box-sizing: border-box; /* So the width includes padding */
+          margin: 0 auto; /* Centering the input box */
+          display: block; /* To apply margin auto */
+      }
+      body {
+      background-color: #033550;
+      color: #ffffff;
+      font-family: 'Mulish', sans-serif;
+      }
+      .peerConnectionState-new {
+        color: rgb(100, 237, 105);
+      }
+      .peerConnectionState-connecting {
+        color: orange;
+      }
+      .peerConnectionState-connected {
+        color: green;
+      }
+      .peerConnectionState-disconnected,
+      .peerConnectionState-closed,
+      .peerConnectionState-failed {
+        color: red;
+      }
+
+      .iceConnectionState-new {
+        color: rgb(237, 164, 100);
+      }
+      .iceConnectionState-checking {
+        color: orange;
+      }
+      .iceConnectionState-connected,
+      .iceConnectionState-completed {
+        color: green;
+      }
+      .peerConnectionState-disconnected,
+      .peerConnectionState-closed,
+      .peerConnectionState-failed {
+        color: red;
+      }
+
+      .iceGatheringState-new {
+        color: rgb(244, 180, 84);
+      }
+      .iceGatheringState-gathering {
+        color: orange;
+      }
+      .iceGatheringState-complete {
+        color: black;
+      }
+
+      .signalingState-stable {
+        color: green;
+      }
+      .signalingState-have-local-offer,
+      .signalingState-have-remote-offer,
+      .signalingState-have-local-pranswer,
+      .signalingState-have-remote-pranswer {
+        color: rgb(15, 27, 49);
+      }
+      .signalingState-closed {
+        color: red;
+      }
+
+      .streamingState-streaming {
+        color: green;
+      }
+
+      .streamingState-empty {
+        color: grey;
+      }
+
+      /* added css from here */
+
+      body * {
+        font-family: 'Mulish', sans-serif;
+        text-align: center;
+      }
+
+      #content {
+        width: 820px;
+        position: relative;
+        margin: 0 auto;
+      }
+
+      #buttons {
+        clear: both;
+        padding: 0 0 0 0;
+        text-align: center;
+      }
+
+      button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+        margin: 0 5px;
+        background-color: #FF914D;
+        color: #fff;
+      }
+
+      button:hover {
+        background-color: #ca5811;
+        cursor: pointer;
+        transition: all 0.2s ease-out;
+      }
+
+      #status {
+        clear: both;
+        padding: 20px 0 0 0;
+        text-align: left;
+        display: inline-block;
+        zoom: 1;
+        line-height: 140%;
+        font-size: 15px;
+      }
+
+      #status div {
+        padding-bottom: 10px;
+      }
+
+      #video-wrapper {
+        background: url(bg.png);
+        height: 500px;
+        background-position: top;
+      }
+
+      #video-wrapper div {
+        width: 400px;
+        margin: 0 auto;
+        padding: 50px 0 0 0;
+      }
+      video {
+        display: block;
+        /* border:1px solid; */
+        border-radius: 50%;
+        background-color: #75efff;
+
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Just an image -->
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="ProfileSessions.html">
+    <img src="logo (2).svg" width="70" height="70" alt="">
+  </a>
+  <a class="navbar-brand mr-auto" href="Profile1.html">Profile</a>
+
+</nav>
+    <!-- adde "id=content" -->
+    <div id="content">
+      <!-- added "id=video-wrapper" -->
+      <div id="video-wrapper">
+        <div>
+          <video id="talk-video" width="400" height="400" autoplay></video>
+        </div>
+      </div>
+      <br />
+      <div id="input-container">
+        <H5>أهلًا وسهــلًا بك! حياك الله انا معلمك اليوم هيا بنا لنبدأ الجلسة
+        <input type="text" id="user-input-field" placeholder="ابدأ الممارسة كتابيًا">
+        <hr> <!-- Add a horizontal rule -->
+      </div>
+      <!-- added div#buttons -->
+      <div id="buttons">
+        <button id="connect-button" type="button">
+            <i class="bi bi-telephone-outbound-fill">
+            </i>
+          </button>
+          <button id="talk-button" type="button">
+            <i class="bi bi-mic-fill"></i>
+          </button>
+          <button id="destroy-button" type="button">
+            <i class="bi bi-telephone-x-fill"></i>
+          </button>
+      </div>
+
+      <!-- added div#status -->
+      <div id="status">
+        <!-- removed the wrapping <div> tags -->
+        ICE gathering status: <label id="ice-gathering-status-label"></label
+        ><br />
+        ICE status: <label id="ice-status-label"></label><br />
+        Peer connection status: <label id="peer-status-label"></label><br />
+        Signaling status: <label id="signaling-status-label"></label><br />
+        Streaming status: <label id="streaming-status-label"></label><br />
+      </div>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
